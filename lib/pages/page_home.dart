@@ -29,7 +29,6 @@ class HomePage extends StatelessWidget {
 
   Widget _createWidget(_TeamViewModel item) =>
       Card(
-
         child: ListTile(
           leading: Image.network(item.imageUrl, width: 50, height: 50),
           title: Text(item.title),
