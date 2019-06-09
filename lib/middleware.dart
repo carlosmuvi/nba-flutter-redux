@@ -13,6 +13,8 @@ List<Middleware<AppState>> createStoreMiddleware() => [
 Future _fetchTeams(
     Store<AppState> store, LoadTeamsAction action, NextDispatcher next) async {
   var teamResponse = await getAllTeams();
-  var teams = teamResponse.data.map((item) => Team(item.fullName)).toList();
+  var teams = teamResponse.data
+      .map((item) => Team(item.fullName, item.teamBadge))
+      .toList();
   next(LoadTeamsSuccessAction(teams));
 }

@@ -9,12 +9,14 @@ import 'package:flutter_redux/flutter_redux.dart';
 
 class HomePage extends StatelessWidget {
   @override
-  Widget build(BuildContext context) => StoreConnector<AppState, _ViewModel>(
+  Widget build(BuildContext context) =>
+      StoreConnector<AppState, _ViewModel>(
         onInit: (store) {
           store.dispatch(LoadTeamsAction());
         },
         converter: (Store<AppState> store) => _ViewModel.create(store),
-        builder: (BuildContext context, _ViewModel viewModel) => Scaffold(
+        builder: (BuildContext context, _ViewModel viewModel) =>
+            Scaffold(
               appBar: AppBar(
                 title: Text(viewModel.pageTitle),
               ),
@@ -25,14 +27,13 @@ class HomePage extends StatelessWidget {
             ),
       );
 
-  Widget _createWidget(_TeamViewModel item) => Row(
-        children: [
-          Text(item.title),
-          FlatButton(
-            onPressed: item.onClickItem,
-            child: Icon(Icons.border_all),
-          )
-        ],
+  Widget _createWidget(_TeamViewModel item) =>
+      Card(
+
+        child: ListTile(
+          leading: Image.network(item.imageUrl, width: 50, height: 50),
+          title: Text(item.title),
+        ),
       );
 }
 
@@ -44,8 +45,9 @@ class _ViewModel {
 
   factory _ViewModel.create(Store<AppState> store) {
     List<_TeamViewModel> items = store.state.teams
-        .map((Team item) => _TeamViewModel(
-            item.name, () => store.dispatch(NavigateToTeamDetailAction(item))))
+        .map((Team item) =>
+        _TeamViewModel(item.name, item.badgeImageUrl,
+                () => store.dispatch(NavigateToTeamDetailAction(item))))
         .toList();
 
     return _ViewModel(
@@ -58,7 +60,8 @@ class _ViewModel {
 @immutable
 class _TeamViewModel {
   final String title;
+  final String imageUrl;
   final Function() onClickItem;
 
-  _TeamViewModel(this.title, this.onClickItem);
+  _TeamViewModel(this.title, this.imageUrl, this.onClickItem);
 }

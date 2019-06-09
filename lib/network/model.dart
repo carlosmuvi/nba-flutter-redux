@@ -14,10 +14,16 @@ class TeamItemResponse {
   String id;
   String name;
   String fullName;
+  String teamBadge;
 
-  TeamItemResponse(this.id, this.name, this.fullName);
+  TeamItemResponse(this.id, this.name, this.fullName, this.teamBadge);
 
   factory TeamItemResponse.fromJson(Map<String, dynamic> json) {
-    return TeamItemResponse(json['idTeam'] as String, json['strTeamShort'] as String, json['strTeam'] as String);
+    return TeamItemResponse(
+        json['idTeam'] as String,
+        json['strTeamShort'] as String,
+        json['strTeam'] as String,
+        json['strTeamBadge'] as String
+    );
   }
 }
