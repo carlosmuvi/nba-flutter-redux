@@ -45,7 +45,7 @@ class _ViewModel {
   factory _ViewModel.create(Store<AppState> store) {
     List<_TeamViewModel> items = store.state.teams
         .map((Team item) => _TeamViewModel(
-            item.title, () => store.dispatch(NavigateToTeamDetailAction(item))))
+            item.name, () => store.dispatch(NavigateToTeamDetailAction(item))))
         .toList();
 
     return _ViewModel(

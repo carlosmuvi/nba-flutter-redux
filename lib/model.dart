@@ -1,14 +1,14 @@
 class Team {
-  final String title;
+  final String name;
 
-  Team(this.title);
+  Team(this.name);
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
           other is Team && runtimeType == other.runtimeType &&
-              title == other.title;
+              name == other.name;
 
   @override
-  int get hashCode => title.hashCode;
+  int get hashCode => name.hashCode;
 }
