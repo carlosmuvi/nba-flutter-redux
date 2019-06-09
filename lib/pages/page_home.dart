@@ -10,6 +10,9 @@ import 'package:flutter_redux/flutter_redux.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => StoreConnector<AppState, _ViewModel>(
+        onInit: (store) {
+          store.dispatch(LoadTeamsAction());
+        },
         converter: (Store<AppState> store) => _ViewModel.create(store),
         builder: (BuildContext context, _ViewModel viewModel) => Scaffold(
               appBar: AppBar(

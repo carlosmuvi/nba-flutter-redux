@@ -7,8 +7,11 @@ AppState appReducer(AppState state, action) => AppState(
     teamListReducer(state.teams, action),
 );
 
-final Reducer<List<Team>> teamListReducer = combineReducers([
-  TypedReducer<List<Team>, NavigateToTeamDetailAction>(_navigateToTeamDetail),
+final Reducer<AppState> homePageReducer = combineReducers([
 ]);
 
-List<Team> _navigateToTeamDetail(List<Team> toDos, NavigateToTeamDetailAction action) => List.unmodifiable(List.from(toDos)..add(action.item));
+final Reducer<List<Team>> teamListReducer = combineReducers([
+  TypedReducer<List<Team>, LoadTeamsSuccessAction>(_addTeams),
+]);
+
+List<Team> _addTeams(List<Team> teams, LoadTeamsSuccessAction action)  => List.unmodifiable(List.from(action.items));
