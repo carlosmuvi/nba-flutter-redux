@@ -13,5 +13,5 @@ class Team {
           badgeImageUrl == other.badgeImageUrl;
 
   @override
-  int get hashCode => name.hashCode^badgeImageUrl.hashCode;
+  int get hashCode => name.hashCode ^ badgeImageUrl.hashCode;
 }

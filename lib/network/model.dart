@@ -23,7 +23,6 @@ class TeamItemResponse {
         json['idTeam'] as String,
         json['strTeamShort'] as String,
         json['strTeam'] as String,
-        json['strTeamBadge'] as String
-    );
+        json['strTeamBadge'] as String);
   }
 }

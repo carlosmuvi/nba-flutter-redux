@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:nba/middleware.dart';
-import 'package:nba/pages/page_home.dart';
-import 'package:nba/state.dart';
-import 'package:nba/reducer.dart';
+import 'package:nba/app/middleware.dart';
+import 'package:nba/features/teams/page.dart';
+import 'package:nba/app/state.dart';
+import 'package:nba/app/reducer.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:redux/redux.dart';
 
@@ -23,7 +23,7 @@ class NBAApp extends StatelessWidget {
           theme: ThemeData(
             primarySwatch: Colors.blue,
           ),
-          home: HomePage(),
+          home: TeamsPage(),
         ),
       );
 }
