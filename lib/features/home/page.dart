@@ -3,6 +3,8 @@ import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
 import 'package:nba/features/teams/action.dart';
 import 'package:nba/app/state.dart';
+import 'package:nba/navigation/action.dart';
+import 'package:nba/navigation/routes.dart';
 import 'package:redux/redux.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 
@@ -35,8 +37,10 @@ class _ViewModel {
 
   _ViewModel(this.pageTitle, this.buttons);
 
-  factory _ViewModel.create(Store<AppState> store) =>
-      _ViewModel("Home", [_ButtonViewModel("Teams", () => {})]);
+  factory _ViewModel.create(Store<AppState> store) => _ViewModel("Home", [
+        _ButtonViewModel(
+            "Teams", () => store.dispatch(NavigatePushAction(AppRoutes.teams)))
+      ]);
 }
 
 @immutable
